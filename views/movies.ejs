@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheet/movies.css">
+    <title>Movie List</title>
+</head>
+<body>
+    <h3>Search Result: <%=searchQuery.toUpperCase() %></h3>
+
+
+    <!--Looping through the data gotten from the api request-->
+
+    <% data["results"].forEach((movies) =>  { %>
+
+            <div class="card mb-5 ">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2<%= movies["poster_path"] %>" class="card-img img-fluid" alt=""/>
+                    </div>
+
+                    <div class="col-md-8">
+                            <div class="card-body">
+                                <h2 class="card-title"> <%= movies["original_title"] %> </h2>
+                                <hr>
+                                <p class="card-text"><%= movies["overview"] %></p>
+                                <hr>                        
+                                <br>
+                                <p class="card-text"> <b>Date Published:</b> <%= movies["release_date"] %> </p>
+                                <p class="card-text"> <b>Total Votes:</b> <%= movies["vote_count"] %> </p>
+                                <p class="card-text"> <b>Average Rating:</b> <%= movies["vote_average"] %> </p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+    <% }) %>
+</body>
+</html>
+
